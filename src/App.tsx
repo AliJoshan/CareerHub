@@ -1,5 +1,6 @@
 import './App.css'
 import NavBar from './components/NavBar'
+import LatestJobs from './components/LatestJobs'
 
 function App() {
   return (
@@ -259,6 +260,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <LatestJobs />
 
     </>
   )
