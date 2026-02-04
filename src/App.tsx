@@ -1,6 +1,7 @@
 import './App.css'
 import NavBar from './components/NavBar'
 import LatestJobs from './components/LatestJobs'
+import CTASection from './CTASection'
 
 function App() {
   return (
@@ -262,6 +263,7 @@ function App() {
       </section>
 
       <LatestJobs />
+      <CTASection />
 
     </>
   )
