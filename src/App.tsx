@@ -116,52 +116,141 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {/* Card 1 */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
-              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-xl">
-                🎒
+            <div
+              className="group bg-white rounded-2xl border border-gray-100 p-8 text-center
+             shadow-sm transition-all duration-300 ease-out
+             hover:-translate-y-2 hover:shadow-xl hover:border-green-200"
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 mx-auto mb-6 rounded-xl
+               bg-green-100 flex items-center justify-center
+               transition-all duration-300
+               group-hover:bg-green-600"
+              >
+                <img
+                  className="w-7 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                  src="public/icons/briefcase.png"
+                  alt="icon"
+                />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+
+              {/* Title */}
+              <h3
+                className="text-lg font-semibold text-gray-900 mb-3
+               transition-colors duration-300
+               group-hover:text-green-600"
+              >
                 Job Portal
               </h3>
+
+              {/* Text */}
               <p className="text-sm text-gray-600">
                 Access thousands of verified job listings from top companies across all industries.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
-              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-xl">
-                👥
+            <div
+              className="group bg-white rounded-2xl border border-gray-100 p-8 text-center
+             shadow-sm transition-all duration-300 ease-out
+             hover:-translate-y-2 hover:shadow-xl hover:border-green-200"
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 mx-auto mb-6 rounded-xl
+               bg-green-100 flex items-center justify-center
+               transition-all duration-300
+               group-hover:bg-green-600"
+              >
+                <img
+                  className="w-7 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                  src="public/icons/customer.png"
+                  alt="icon"
+                />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+
+              {/* Title */}
+              <h3
+                className="text-lg font-semibold text-gray-900 mb-3
+               transition-colors duration-300
+               group-hover:text-green-600"
+              >
                 Talent Agency
               </h3>
+
+              {/* Text */}
               <p className="text-sm text-gray-600">
                 Connect with our network of recruiters who specialize in matching talent with opportunities.
               </p>
             </div>
 
+
             {/* Card 3 */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
-              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-xl">
-                🎓
+            <div
+              className="group bg-white rounded-2xl border border-gray-100 p-8 text-center
+             shadow-sm transition-all duration-300 ease-out
+             hover:-translate-y-2 hover:shadow-xl hover:border-green-200"
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 mx-auto mb-6 rounded-xl
+               bg-green-100 flex items-center justify-center
+               transition-all duration-300
+               group-hover:bg-green-600"
+              >
+                <img
+                  className="w-7 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                  src="public/icons/graduation.png"
+                  alt="icon"
+                />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+
+              {/* Title */}
+              <h3
+                className="text-lg font-semibold text-gray-900 mb-3
+               transition-colors duration-300
+               group-hover:text-green-600"
+              >
                 Career Coaching
               </h3>
+
+              {/* Text */}
               <p className="text-sm text-gray-600">
                 Get personalized guidance from industry experts to accelerate your career growth.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
-              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-xl">
-                🎯
+            <div
+              className="group bg-white rounded-2xl border border-gray-100 p-8 text-center
+             shadow-sm transition-all duration-300 ease-out
+             hover:-translate-y-2 hover:shadow-xl hover:border-green-200"
+            >
+              {/* Icon */}
+              <div
+                className="w-14 h-14 mx-auto mb-6 rounded-xl
+               bg-green-100 flex items-center justify-center
+               transition-all duration-300
+               group-hover:bg-green-600"
+              >
+                <img
+                  className="w-7 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                  src="public/icons/circular-target.png"
+                  alt="icon"
+                />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+
+              {/* Title */}
+              <h3
+                className="text-lg font-semibold text-gray-900 mb-3
+               transition-colors duration-300
+               group-hover:text-green-600"
+              >
                 Smart Matching
               </h3>
+
+              {/* Text */}
               <p className="text-sm text-gray-600">
                 Our AI-powered system matches you with jobs that fit your skills and preferences.
               </p>
