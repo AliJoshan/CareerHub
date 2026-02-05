@@ -1,23 +1,24 @@
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from './components/NavBar'
-import Hero from './components/Hero'
-import Stats from './components/Stats'
-import Features from './components/Features'
-import LatestJobs from './components/LatestJobs'
-import CTASection from './CTASection'
 import Footer from './components/Footer'
+
+import Home from './pages/Home'
+import Jobs from './pages/Jobs'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
-      <Hero />
-      <Stats />
-      <Features />
-      <LatestJobs />
-      <CTASection />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/jobs" element={<Jobs />} />
+      </Routes>
+
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

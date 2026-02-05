@@ -77,7 +77,7 @@ function Footer() {
             {/* BOTTOM */}
             <div className="border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-                    <span>© 2024 CareerHub. All rights reserved.</span>
+                    <span>© 2026 CareerHub. All rights reserved.</span>
 
                     <div className="flex gap-6">
                         <span className="hover:text-green-600 transition cursor-pointer">

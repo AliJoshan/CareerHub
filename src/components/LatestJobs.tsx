@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const jobs = [
     {
         title: "Senior Frontend Developer",
@@ -105,9 +107,12 @@ function LatestJobs() {
 
                 {/* Button */}
                 <div className="text-center mt-12">
-                    <button className="bg-green-600 text-white px-7 py-2.5 rounded-lg text-sm font-medium shadow-md hover:bg-green-700 active:scale-95 transition">
+                    <Link
+                        to="/jobs"
+                        className="inline-block bg-green-600 text-white px-7 py-2.5 rounded-lg text-sm font-medium shadow-md hover:bg-green-700 active:scale-95 transition"
+                    >
                         Show More Jobs
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

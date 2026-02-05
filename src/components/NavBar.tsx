@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function NavBar() {
     return (
         <nav className="w-full bg-white border-b border-gray-100">
@@ -15,8 +17,29 @@ function NavBar() {
 
                 {/* Links */}
                 <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-                    <li className="text-green-600 cursor-pointer">Home</li>
-                    <li className="hover:text-green-600 cursor-pointer">Jobs</li>
+                    <li>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                `transition ${isActive ? "text-green-600" : "hover:text-green-600"
+                                }`
+                            }
+                        >
+                            Home
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink
+                            to="/jobs"
+                            className={({ isActive }) =>
+                                `transition ${isActive ? "text-green-600" : "hover:text-green-600"
+                                }`
+                            }
+                        >
+                            Jobs
+                        </NavLink>
+                    </li>
                     <li className="hover:text-green-600 cursor-pointer">Saved Jobs</li>
                     <li className="hover:text-green-600 cursor-pointer">About</li>
                 </ul>
