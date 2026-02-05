@@ -2,6 +2,7 @@ import './App.css'
 import NavBar from './components/NavBar'
 import LatestJobs from './components/LatestJobs'
 import CTASection from './CTASection'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -264,6 +265,7 @@ function App() {
 
       <LatestJobs />
       <CTASection />
+      <Footer />
 
     </>
   )
