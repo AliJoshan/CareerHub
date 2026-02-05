@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Footer() {
     return (
         <footer className="bg-white border-t border-gray-100">
@@ -28,8 +30,23 @@ function Footer() {
                     </h4>
 
                     <ul className="space-y-4 text-sm text-gray-600">
-                        <li className="hover:text-green-600 transition">Home</li>
-                        <li className="hover:text-green-600 transition">Jobs</li>
+                        <li className="hover:text-green-600 transition">
+                            <Link
+                                to="/"
+                                className="hover:text-green-600 transition"
+                                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                            >
+                                Home
+                            </Link>
+                        </li>
+                        <li className="hover:text-green-600 transition">
+                            <Link
+                                to="/jobs"
+                                className="hover:text-green-600 transition"
+                            >
+                                Jobs
+                            </Link>
+                        </li>
                         <li className="hover:text-green-600 transition">Saved Jobs</li>
                         <li className="hover:text-green-600 transition">About</li>
                     </ul>
