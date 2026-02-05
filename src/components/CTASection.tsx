@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function CTASection() {
     return (
         <section className="bg-green-600">
@@ -16,10 +18,14 @@ function CTASection() {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     {/* Browse Jobs */}
-                    <button className="border border-white text-white px-7 py-2.5 rounded-lg text-sm font-medium
-            hover:bg-white hover:text-green-600 transition active:scale-95">
+                    <Link
+                        to="/jobs"
+                        className="inline-flex items-center justify-center
+             border border-white text-white px-7 py-2.5 rounded-lg text-sm font-medium
+             hover:bg-white hover:text-green-600 transition active:scale-95"
+                    >
                         Browse Jobs →
-                    </button>
+                    </Link>
 
                     {/* Post a Job */}
                     <button className="bg-gray-200 text-gray-800 px-7 py-2.5 rounded-lg text-sm font-medium
