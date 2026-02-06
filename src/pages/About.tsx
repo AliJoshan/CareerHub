@@ -25,7 +25,7 @@ function About() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
                         {/* Card 1 */}
-                        <div className="bg-white border border-gray-200 rounded-2xl px-6 py-10 text-center">
+                        <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
                                 <span className="text-green-600 text-xl">◎</span>
                             </div>
@@ -40,7 +40,7 @@ function About() {
                         </div>
 
                         {/* Card 2 */}
-                        <div className="bg-white border border-gray-200 rounded-2xl px-6 py-10 text-center">
+                        <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
                                 <span className="text-green-600 text-xl">👁</span>
                             </div>
@@ -55,7 +55,7 @@ function About() {
                         </div>
 
                         {/* Card 3 */}
-                        <div className="bg-white border border-gray-200 rounded-2xl px-6 py-10 text-center">
+                        <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
                                 <span className="text-green-600 text-xl">♡</span>
                             </div>
@@ -70,7 +70,7 @@ function About() {
                         </div>
 
                         {/* Card 4 */}
-                        <div className="bg-white border border-gray-200 rounded-2xl px-6 py-10 text-center">
+                        <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
                                 <span className="text-green-600 text-xl">🏅</span>
                             </div>
@@ -86,6 +86,7 @@ function About() {
 
                     </div>
                 </div>
+
 
             </div>
         </section>
