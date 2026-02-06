@@ -29,6 +29,18 @@ function JobsList() {
                     tags={["Full-time", "Design"]}
                     description="Create intuitive and delightful user experiences for modern products."
                 />
+
+
+                <JobCard
+                    letter="G"
+                    title="Marketing Manager"
+                    company="GrowthLabs"
+                    location="Austin, TX"
+                    time="5 days ago"
+                    salary="$80k - $110k"
+                    tags={["Full-time", "Marketing"]}
+                    description="Lead our marketing initiatives and drive customer acquisition strategies."
+                />
             </div>
         </div>
     );
