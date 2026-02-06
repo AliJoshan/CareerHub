@@ -51,7 +51,17 @@ function NavBar() {
                             Saved Jobs
                         </NavLink>
                     </li>
-                    <li className="hover:text-green-600 cursor-pointer">About</li>
+                    <li>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                `transition ${isActive ? "text-green-600" : "hover:text-green-600"
+                                }`
+                            }
+                        >
+                            About
+                        </NavLink>
+                    </li>
                 </ul>
 
                 {/* Actions */}

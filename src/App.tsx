@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Jobs from './pages/Jobs'
 import SavedJobs from './pages/SavedJobs';
+import About from './pages/About';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/saved" element={<SavedJobs />} />
+        <Route path="/about" element={<About />} />
       </Routes>
 
       <Footer />
