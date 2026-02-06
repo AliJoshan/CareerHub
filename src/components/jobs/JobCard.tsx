@@ -20,73 +20,89 @@ function JobCard({
     description,
 }: JobCardProps) {
     return (
-        <div className="bg-[#fdfefd] rounded-2xl border border-gray-200/70 p-6 flex justify-between gap-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-[1px]">
-
-            <div className="flex gap-5">
-                <div className="w-12 h-12 rounded-xl bg-green-100 text-green-700 font-bold flex items-center justify-center">
+        <div
+            className="
+        bg-[#fdfefd]
+        rounded-xl
+        border border-gray-200/70
+        p-4
+        flex justify-between gap-5
+        shadow-sm
+        transition-all duration-300
+        hover:shadow-lg
+      "
+        >
+            {/* LEFT */}
+            <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-lg bg-green-100 text-green-700 font-semibold flex items-center justify-center">
                     {letter}
                 </div>
 
                 <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+                    <h3 className="text-base font-semibold text-gray-900 leading-tight">
+                        {title}
+                    </h3>
 
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-gray-600 mt-0.5">
                         {company} <span className="text-green-500">✔</span>
                     </p>
 
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-500 mt-3">
+                    <div className="flex flex-wrap gap-3 text-xs text-gray-500 mt-2">
                         <span>📍 {location}</span>
                         <span>🕒 {time}</span>
                         <span>💲 {salary}</span>
                     </div>
 
-                    <div className="flex gap-2 mt-4">
+                    <div className="flex gap-2 mt-2">
                         {tags.map((tag) => (
-                            <span key={tag} className="text-xs bg-gray-100 px-3 py-1 rounded-full">
+                            <span
+                                key={tag}
+                                className="text-[11px] bg-gray-100 px-2.5 py-0.5 rounded-full"
+                            >
                                 {tag}
                             </span>
                         ))}
                     </div>
 
-                    <p className="text-gray-600 mt-4 text-sm max-w-xl">{description}</p>
+                    <p className="text-sm text-gray-600 mt-2 max-w-xl line-clamp-2">
+                        {description}
+                    </p>
                 </div>
             </div>
 
-            <div className="flex flex-col items-end gap-3">
-                {/* Apply button */}
+            {/* RIGHT */}
+            <div className="flex flex-col items-end gap-2">
                 <button
                     className="
-      w-[140px]
-      bg-green-600
-      text-white
-      py-2
-      rounded-xl
-      text-sm
-      font-medium
-      text-center
-      hover:bg-green-600
-      transition
-    "
+            w-[120px]
+            bg-green-600
+            text-white
+            py-1.5
+            rounded-lg
+            text-sm
+            font-medium
+            hover:bg-green-600
+            transition
+          "
                 >
                     Apply Now
                 </button>
 
-                {/* Bookmark button */}
                 <button
                     className="
-      w-[140px]
-      h-10
-      border border-gray-200
-      rounded-xl
-      flex items-center justify-center
-      hover:bg-gray-50
-      transition
-    "
+            w-[120px]
+            h-9
+            border border-gray-200
+            rounded-lg
+            flex items-center justify-center
+            hover:bg-gray-50
+            transition
+          "
                 >
                     <img
                         src="/icons/bookmark.png"
                         alt="Save job"
-                        className="w-5 h-5 object-contain"
+                        className="w-4 h-4 object-contain"
                     />
                 </button>
             </div>
