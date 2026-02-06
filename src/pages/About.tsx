@@ -27,7 +27,13 @@ function About() {
                         {/* Card 1 */}
                         <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
-                                <span className="text-green-600 text-xl">◎</span>
+                                <span className="text-green-600 text-xl">
+                                    <img
+                                        src="/icons/circular-target.png"
+                                        alt=""
+                                        className="w-6 h-6 object-contain opacity-90"
+                                    />
+                                </span>
                             </div>
 
                             <h3 className="font-semibold text-gray-900 mb-2">
@@ -42,7 +48,13 @@ function About() {
                         {/* Card 2 */}
                         <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
-                                <span className="text-green-600 text-xl">👁</span>
+                                <span className="text-green-600 text-xl">
+                                    <img
+                                        src="/icons/eye.png"
+                                        alt=""
+                                        className="w-6 h-6 object-contain opacity-90"
+                                    />
+                                </span>
                             </div>
 
                             <h3 className="font-semibold text-gray-900 mb-2">
@@ -57,7 +69,13 @@ function About() {
                         {/* Card 3 */}
                         <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
-                                <span className="text-green-600 text-xl">♡</span>
+                                <span className="text-green-600 text-xl">
+                                    <img
+                                        src="/icons/heart.png"
+                                        alt=""
+                                        className="w-6 h-6 object-contain opacity-90"
+                                    />
+                                </span>
                             </div>
 
                             <h3 className="font-semibold text-gray-900 mb-2">
@@ -72,7 +90,13 @@ function About() {
                         {/* Card 4 */}
                         <div className="bg-white border border-gray-100 rounded-2xl px-6 py-10 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
                             <div className="w-14 h-14 mx-auto rounded-xl bg-green-100 flex items-center justify-center mb-6">
-                                <span className="text-green-600 text-xl">🏅</span>
+                                <span className="text-green-600 text-xl">
+                                    <img
+                                        src="/icons/medal.png"
+                                        alt=""
+                                        className="w-6 h-6 object-contain opacity-90"
+                                    />
+                                </span>
                             </div>
 
                             <h3 className="font-semibold text-gray-900 mb-2">
