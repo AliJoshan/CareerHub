@@ -111,6 +111,47 @@ function About() {
                     </div>
                 </div>
 
+                {/* Team Section */}
+                <div className="mt-36">
+                    <div className="text-center mb-16">
+                        <h2 className="text-2xl font-bold text-gray-900">
+                            Meet Our Team
+                        </h2>
+                        <p className="text-gray-500 mt-3">
+                            The people behind CareerHub
+                        </p>
+                    </div>
+
+                    {/* Team Grid */}
+                    <div className="flex flex-col items-center gap-10">
+
+                        <div className="text-center">
+                            <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 border border-gray-200 shadow-sm">
+                                <img
+                                    src="/images/Me.jpeg"
+                                    alt="Ali Anas Joshan"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+
+                            <h3 className="mt-6 text-lg font-semibold text-gray-900">
+                                Ali Anas Joshan
+                            </h3>
+
+                            <p className="text-sm text-gray-600 mt-1">
+                                Founder & Developer
+                            </p>
+
+                            <p className="text-sm text-gray-500 mt-4 max-w-sm mx-auto">
+                                CareerHub is currently built and maintained by me.
+                                As the platform grows, talented people will join the team to help
+                                shape its future.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
 
             </div>
         </section>
