@@ -11,7 +11,6 @@ function Jobs() {
     const [jobs, setJobs] = useState<Job[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    // Jobs.tsx
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [selectedJobType, setSelectedJobType] = useState<string | null>(null);
