@@ -4,6 +4,8 @@ import type { Job } from "../api/jobs";
 import JobsHeader from "../components/jobs/JobsHeader";
 import JobsFilters from "../components/jobs/JobsFilters";
 import JobsList from "../components/jobs/JobsList";
+import JobsListSkeleton from "../components/jobs/JobsListSkeleton";
+import JobsError from "../components/jobs/JobsError";
 
 function Jobs() {
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -13,18 +15,18 @@ function Jobs() {
     useEffect(() => {
         getJobs()
             .then(setJobs)
-            .catch(() => setError("Failed to load jobs"))
+            .catch(() => setError("Failed to load jobs. Please try again."))
             .finally(() => setLoading(false));
     }, []);
 
     let content;
 
     if (loading) {
-        content = <p>Loading jobs...</p>;
+        content = <JobsListSkeleton />;
     } else if (error) {
-        content = <p className="text-red-500">{error}</p>;
+        content = <JobsError message={error} />;
     } else if (!jobs.length) {
-        content = <p>No jobs found.</p>;
+        content = <p className="lg:col-span-3">No jobs found.</p>;
     } else {
         content = <JobsList jobs={jobs} />;
     }
