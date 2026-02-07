@@ -20,6 +20,7 @@ function JobsList({ jobs }: JobsListProps) {
                 {jobs.map((job) => (
                     <JobCard
                         key={job.id}
+                        id={job.id}
                         letter={job.company.charAt(0)}
                         title={job.title}
                         company={job.company}
