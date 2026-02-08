@@ -68,10 +68,8 @@ const JOBS: Job[] = [
     },
 ];
 
-export function getJobs(): Promise<Job[]> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(JOBS);
-        }, 800);
-    });
+export async function getJobs(): Promise<Job[]> {
+    // simulate network latency
+    await new Promise(resolve => setTimeout(resolve, 800));
+    return JOBS;
 }
