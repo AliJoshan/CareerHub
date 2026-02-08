@@ -8,6 +8,29 @@ function Skeleton({ className }: { className?: string }) {
     return <div className={`bg-gray-200 animate-pulse rounded ${className}`} />;
 }
 
+function ListSectionSkeleton({ lines = 5 }: { lines?: number }) {
+    return (
+        <section className="relative rounded-2xl border border-green-200 bg-gradient-to-br from-green-50/60 to-white p-8 space-y-6 shadow-sm">
+            <span className="absolute left-0 top-6 h-12 w-1.5 rounded-r-full bg-green-300 animate-pulse" />
+
+            <Skeleton className="h-6 w-1/3" />
+
+            <ul className="space-y-4">
+                {[...Array(lines)].map((_, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-green-300 animate-pulse shrink-0 flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white/80 rounded-full" />
+                        </div>
+
+                        <Skeleton className="h-4 w-full" />
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}
+
+
 export default function JobDetailsPage() {
     const { jobId } = useParams();
     const navigate = useNavigate();
@@ -54,21 +77,9 @@ export default function JobDetailsPage() {
                     <Skeleton className="h-4 w-3/4" />
                 </div>
 
-                {/* Responsibilities skeleton */}
-                <div className="bg-white rounded-2xl border border-green-200 p-8 space-y-4 shadow-sm">
-                    <Skeleton className="h-6 w-1/3" />
-                    {[...Array(5)].map((_, i) => (
-                        <Skeleton key={i} className="h-4 w-full" />
-                    ))}
-                </div>
+                <ListSectionSkeleton lines={5} />
+                <ListSectionSkeleton lines={5} />
 
-                {/* Requirements skeleton */}
-                <div className="bg-white rounded-2xl border border-green-200 p-8 space-y-4 shadow-sm">
-                    <Skeleton className="h-6 w-1/3" />
-                    {[...Array(5)].map((_, i) => (
-                        <Skeleton key={i} className="h-4 w-full" />
-                    ))}
-                </div>
             </div>
         );
     }
