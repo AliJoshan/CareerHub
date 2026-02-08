@@ -3,9 +3,11 @@ import type { Job } from "../../api/jobs";
 
 type JobsListProps = {
     jobs: Job[];
+    savedJobs: string[];                  // <-- add this
+    setSavedJobs: (jobs: string[]) => void; // <-- add this
 };
 
-function JobsList({ jobs }: JobsListProps) {
+function JobsList({ jobs, savedJobs, setSavedJobs }: JobsListProps) {
     return (
         <div className="lg:col-span-3">
             <p className="text-gray-600 mb-6">
@@ -29,6 +31,8 @@ function JobsList({ jobs }: JobsListProps) {
                         salary={job.salary}
                         tags={[job.type, ...job.tags]}
                         description={job.description}
+                        savedJobs={savedJobs}        // <-- pass it
+                        setSavedJobs={setSavedJobs}  // <-- pass it
                     />
                 ))}
             </div>
