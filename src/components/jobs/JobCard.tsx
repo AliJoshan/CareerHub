@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useSavedJobsStore } from "../../stores/useSavedJobsStore";
 
 type JobCardProps = {
     id: string;
@@ -11,8 +11,6 @@ type JobCardProps = {
     salary: string;
     tags: string[];
     description: string;
-    savedJobs: string[];
-    setSavedJobs: (jobs: string[]) => void;
 };
 
 function JobCard({
@@ -25,28 +23,13 @@ function JobCard({
     salary,
     tags,
     description,
-    savedJobs,
-    setSavedJobs,
 }: JobCardProps) {
-    const [isSaved, setIsSaved] = useState(false);
+    const toggleSave = useSavedJobsStore((s) => s.toggleSave);
+    const isSaved = useSavedJobsStore((s) => s.isSaved(id));
 
-    useEffect(() => {
-        setIsSaved(savedJobs.includes(id));
-    }, [savedJobs, id]);
-
-    const toggleSave = (e: React.MouseEvent) => {
+    const handleToggle = (e: React.MouseEvent) => {
         e.preventDefault();
-
-        let updatedJobs: string[];
-        if (isSaved) {
-            updatedJobs = savedJobs.filter((jobId) => jobId !== id);
-        } else {
-            updatedJobs = [...savedJobs, id];
-        }
-
-        setSavedJobs(updatedJobs);
-        localStorage.setItem("savedJobs", JSON.stringify(updatedJobs));
-        setIsSaved(!isSaved);
+        toggleSave(id);
     };
 
     return (
@@ -92,19 +75,22 @@ function JobCard({
 
                 {/* RIGHT */}
                 <div className="flex flex-col items-end gap-2">
-                    <button className="w-[120px] bg-green-600 text-white py-1.5 rounded-lg text-sm font-medium hover:bg-green-600 transition">
+                    <button className="w-30 bg-green-600 text-white py-1.5 rounded-lg text-sm font-medium hover:bg-green-600 transition">
                         Apply Now
                     </button>
 
                     <button
-                        onClick={toggleSave}
-                        className={`w-[120px] h-9 border rounded-lg flex items-center justify-center transition ${isSaved ? "bg-green-100 border-green-600" : "border-gray-200 hover:bg-gray-50"
+                        onClick={handleToggle}
+                        className={`w-30 h-9 border rounded-lg flex items-center justify-center transition ${isSaved
+                            ? "bg-green-100 border-green-600"
+                            : "border-gray-200 hover:bg-gray-50"
                             }`}
                     >
                         <img
                             src="/icons/bookmark.png"
                             alt={isSaved ? "Saved" : "Save job"}
-                            className={`w-4 h-4 object-contain ${isSaved ? "filter-green" : ""}`}
+                            className={`w-4 h-4 ${isSaved ? "filter-green" : ""
+                                }`}
                         />
                     </button>
                 </div>

@@ -15,12 +15,6 @@ function Jobs() {
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [selectedJobType, setSelectedJobType] = useState<string | null>(null);
 
-    const [savedJobs, setSavedJobs] = useState<string[]>(() => {
-        const saved = localStorage.getItem("savedJobs");
-        return saved ? JSON.parse(saved) : [];
-    });
-
-
     const filteredJobs = jobs.filter((job) => {
         const matchCategory = selectedCategory ? job.tags.includes(selectedCategory) : true;
         const matchLocation = selectedLocation ? job.location === selectedLocation : true;
@@ -44,7 +38,7 @@ function Jobs() {
     } else if (!jobs.length) {
         content = <p className="lg:col-span-3">No jobs found.</p>;
     } else {
-        content = <JobsList jobs={filteredJobs} savedJobs={savedJobs} setSavedJobs={setSavedJobs} />;
+        content = <JobsList jobs={filteredJobs} />;
     }
 
     return (
