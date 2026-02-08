@@ -4,6 +4,10 @@ import { ArrowLeft, MapPin, Briefcase, DollarSign, Clock, Bookmark } from "lucid
 import { getJobs } from "../api/jobs";
 import type { Job } from "../api/jobs";
 
+function Skeleton({ className }: { className?: string }) {
+    return <div className={`bg-gray-200 animate-pulse rounded ${className}`} />;
+}
+
 export default function JobDetailsPage() {
     const { jobId } = useParams();
     const navigate = useNavigate();
@@ -18,7 +22,56 @@ export default function JobDetailsPage() {
         });
     }, [jobId]);
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 px-6 py-10 space-y-10">
+                <Skeleton className="h-5 w-24 mb-8" />
+
+                {/* Header card skeleton */}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 lg:p-8 flex flex-col lg:flex-row gap-6">
+                    <Skeleton className="w-14 h-14 rounded-xl" />
+                    <div className="flex-1 space-y-4">
+                        <Skeleton className="h-6 w-3/4" />
+                        <Skeleton className="h-4 w-1/2" />
+                        <Skeleton className="h-4 w-1/3" />
+                        <div className="flex gap-2 mt-4">
+                            <Skeleton className="h-5 w-16" />
+                            <Skeleton className="h-5 w-20" />
+                            <Skeleton className="h-5 w-12" />
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <Skeleton className="h-10 w-24" />
+                        <Skeleton className="h-10 w-10" />
+                    </div>
+                </div>
+
+                {/* Description skeleton */}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-4">
+                    <Skeleton className="h-6 w-1/4" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                </div>
+
+                {/* Responsibilities skeleton */}
+                <div className="bg-white rounded-2xl border border-green-200 p-8 space-y-4 shadow-sm">
+                    <Skeleton className="h-6 w-1/3" />
+                    {[...Array(5)].map((_, i) => (
+                        <Skeleton key={i} className="h-4 w-full" />
+                    ))}
+                </div>
+
+                {/* Requirements skeleton */}
+                <div className="bg-white rounded-2xl border border-green-200 p-8 space-y-4 shadow-sm">
+                    <Skeleton className="h-6 w-1/3" />
+                    {[...Array(5)].map((_, i) => (
+                        <Skeleton key={i} className="h-4 w-full" />
+                    ))}
+                </div>
+            </div>
+        );
+    }
     if (!job) return <div className="min-h-screen flex items-center justify-center">Job not found</div>;
 
     return (
@@ -131,6 +184,23 @@ export default function JobDetailsPage() {
                         ))}
                     </ul>
                 </section>
+
+                {/* CTA */}
+                <div className="rounded-2xl border border-green-200 bg-gradient-to-br from-green-50/70 to-white px-8 py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 shadow-sm">
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-900"> Interested in this role?
+                        </h3> <p className="text-gray-600 mt-1"> Apply now and take the next step in your career.
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <button className="bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl px-6 py-2.5 transition shadow-md shadow-green-600/20">
+                            Apply Now
+                        </button>
+                        <button className="w-11 h-11 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition">
+                            <Bookmark className="w-5 h-5 text-gray-700" />
+                        </button>
+                    </div>
+                </div>
 
             </div>
         </div>
