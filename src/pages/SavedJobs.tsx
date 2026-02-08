@@ -19,31 +19,49 @@ function SavedJobs() {
     if (!savedJobs.length) {
         return (
             <section className="min-h-screen bg-white">
-                <div className="max-w-7xl mx-auto px-6 py-20">
+                <div className="max-w-7xl mx-auto px-6 py-24">
                     <div className="text-center">
                         <h1 className="text-3xl font-bold text-gray-900">
                             Saved <span className="text-green-600">Jobs</span>
                         </h1>
-                        <p className="text-gray-500 mt-2 text-sm">
+                        <p className="mt-3 text-sm text-gray-500">
                             Keep track of opportunities you're interested in
                         </p>
                     </div>
 
-                    <div className="flex justify-center mt-24">
-                        <div className="w-full max-w-xl bg-[#f7faf7] border border-gray-200/70 rounded-2xl px-8 py-12 text-center">
-                            <h3 className="text-base font-semibold text-gray-900">
-                                No saved jobs yet
-                            </h3>
-                            <p className="text-sm text-gray-500 mt-2">
-                                Start exploring and save jobs you're interested in to view them here.
-                            </p>
-                            <button
-                                className="mt-6 bg-green-600 text-white px-6 py-2.5 rounded-xl text-sm font-medium"
-                                onClick={() => (window.location.href = "/jobs")}
+                    <div className="mt-40 flex flex-col items-center text-center">
+                        <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-9 h-9 text-gray-500"
                             >
-                                Browse Jobs →
-                            </button>
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17.25 6.75v12l-5.25-3-5.25 3v-12a2.25 2.25 0 012.25-2.25h6a2.25 2.25 0 012.25 2.25z"
+                                />
+                            </svg>
                         </div>
+
+                        <h3 className="mt-8 text-lg font-semibold text-gray-900">
+                            No saved jobs yet
+                        </h3>
+
+                        <p className="mt-2 max-w-sm text-sm text-gray-500">
+                            Start exploring and save jobs you're interested in to view them here.
+                        </p>
+
+                        <button
+                            onClick={() => (window.location.href = "/jobs")}
+                            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-green-600 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-green-700"
+                        >
+                            Browse Jobs
+                            <span className="text-base">→</span>
+                        </button>
                     </div>
                 </div>
             </section>
