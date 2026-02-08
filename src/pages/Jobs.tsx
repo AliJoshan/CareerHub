@@ -57,12 +57,12 @@ function Jobs() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
                     <JobsFilters
-                        selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
-                        selectedLocation={selectedLocation}
-                        setSelectedLocation={setSelectedLocation}
-                        selectedJobType={selectedJobType}
-                        setSelectedJobType={setSelectedJobType}
+                        category={selectedCategory}
+                        location={selectedLocation}
+                        jobType={selectedJobType}
+                        onCategoryChange={setSelectedCategory}
+                        onLocationChange={setSelectedLocation}
+                        onJobTypeChange={setSelectedJobType}
                     />
 
                     {content}

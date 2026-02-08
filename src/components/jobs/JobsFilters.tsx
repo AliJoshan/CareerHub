@@ -1,19 +1,19 @@
 type JobsFiltersProps = {
-    selectedCategory: string | null;
-    setSelectedCategory: (val: string | null) => void;
-    selectedLocation: string | null;
-    setSelectedLocation: (val: string | null) => void;
-    selectedJobType: string | null;
-    setSelectedJobType: (val: string | null) => void;
+    category: string | null;
+    location: string | null;
+    jobType: string | null;
+    onCategoryChange: (val: string | null) => void;
+    onLocationChange: (val: string | null) => void;
+    onJobTypeChange: (val: string | null) => void;
 };
 
 function JobsFilters({
-    selectedCategory,
-    setSelectedCategory,
-    selectedLocation,
-    setSelectedLocation,
-    selectedJobType,
-    setSelectedJobType,
+    category,
+    location,
+    jobType,
+    onCategoryChange,
+    onLocationChange,
+    onJobTypeChange,
 }: JobsFiltersProps) {
     return (
         <div className="space-y-6">
@@ -24,9 +24,9 @@ function JobsFilters({
                         Category
                     </label>
                     <select
-                        value={selectedCategory ?? ""}
+                        value={category ?? ""}
                         onChange={(e) =>
-                            setSelectedCategory(
+                            onCategoryChange(
                                 e.target.value === "" ? null : e.target.value
                             )
                         }
@@ -54,9 +54,9 @@ function JobsFilters({
                         Location
                     </label>
                     <select
-                        value={selectedLocation ?? ""}
+                        value={location ?? ""}
                         onChange={(e) =>
-                            setSelectedLocation(
+                            onLocationChange(
                                 e.target.value === "" ? null : e.target.value
                             )
                         }
@@ -85,9 +85,9 @@ function JobsFilters({
                         Job Type
                     </label>
                     <select
-                        value={selectedJobType ?? ""}
+                        value={jobType ?? ""}
                         onChange={(e) =>
-                            setSelectedJobType(
+                            onJobTypeChange(
                                 e.target.value === "" ? null : e.target.value
                             )
                         }
