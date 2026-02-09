@@ -1,5 +1,6 @@
 import { fetchJobsFromAdzuna } from "./jobsApi";
 import { parseJobDescription } from "../utils/parseJobDescription";
+import { formatSalary } from "../utils/format";
 
 export type Job = {
     id: string;
@@ -40,12 +41,7 @@ export async function getJobs(): Promise<Job[]> {
                         .replace(/\b\w/g, c => c.toUpperCase())
                     : "N/A",
 
-                salary:
-                    job.salary_min && job.salary_max
-                        ? `$${Math.round(job.salary_min)} – $${Math.round(job.salary_max)}`
-                        : job.salary_min
-                            ? `$${Math.round(job.salary_min)}`
-                            : "N/A",
+                salary: formatSalary(job.salary_min, job.salary_max),
 
                 tags: [
                     job.category?.tag,
