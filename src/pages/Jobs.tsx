@@ -14,12 +14,19 @@ function Jobs() {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [selectedJobType, setSelectedJobType] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const filteredJobs = jobs.filter((job) => {
         const matchCategory = selectedCategory ? job.tags.includes(selectedCategory) : true;
         const matchLocation = selectedLocation ? job.location === selectedLocation : true;
         const matchJobType = selectedJobType ? job.type === selectedJobType : true;
-        return matchCategory && matchLocation && matchJobType;
+
+        const matchSearch = searchTerm
+            ? job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            job.company.toLowerCase().includes(searchTerm.toLowerCase())
+            : true;
+
+        return matchCategory && matchLocation && matchJobType && matchSearch;
     });
 
     useEffect(() => {
@@ -44,7 +51,7 @@ function Jobs() {
     return (
         <section className="min-h-screen bg-[#f9fcf9]">
             <div className="max-w-7xl mx-auto px-6 py-16">
-                <JobsHeader />
+                <JobsHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
                     <JobsFilters
