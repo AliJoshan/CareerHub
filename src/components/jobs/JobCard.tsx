@@ -57,9 +57,9 @@ function JobCard({
                         </div>
 
                         <div className="flex gap-2 mt-2">
-                            {tags.map((tag) => (
+                            {tags.map((tag, index) => (
                                 <span
-                                    key={tag}
+                                    key={`${id}-${tag}-${index}`}
                                     className="text-[11px] bg-gray-100 px-2.5 py-0.5 rounded-full"
                                 >
                                     {tag}

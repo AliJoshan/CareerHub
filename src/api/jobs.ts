@@ -1,6 +1,4 @@
-import { fetchJobsFromArbeitnow } from "./jobsApi";
-import type { JobFromArbeitnow } from "./jobsApi";
-import { parseJobDescription } from "../utils/parseJobDescription";
+import { fetchJobsFromAdzuna } from "./jobsApi";
 
 export type Job = {
     id: string;
@@ -18,25 +16,43 @@ export type Job = {
 
 export async function getJobs(): Promise<Job[]> {
     try {
-        const jobsFromAPI: JobFromArbeitnow[] = await fetchJobsFromArbeitnow();
+        const jobsFromAPI = await fetchJobsFromAdzuna();
 
-        return jobsFromAPI.map(job => {
-            const { responsibilities, requirements } = parseJobDescription(job.description);
-            const timestamp = Number(job.created_at) || Date.now() / 1000;
+        return jobsFromAPI.map((job) => {
+            const cleanDescription = job.description
+                .replace(/<[^>]+>/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
 
             return {
-                id: job.slug,
+                id: job.id,
                 title: job.title,
-                company: job.company_name,
-                location: job.location,
-                type: job.remote ? "Remote" : "On-site",
-                salary: job.salary || "N/A",
-                tags: job.tags || [],
-                description: job.description,
-                postedAt: new Date(timestamp * 1000).toLocaleDateString(),
+                company: job.company.display_name,
+                location: job.location.display_name,
 
-                responsibilities,
-                requirements,
+                type: job.contract_time
+                    ? job.contract_time
+                        .replace("_", " ")
+                        .replace(/\b\w/g, (c) => c.toUpperCase())
+                    : "N/A",
+
+                salary:
+                    job.salary_min && job.salary_max
+                        ? `$${Math.round(job.salary_min)} – $${Math.round(job.salary_max)}`
+                        : job.salary_min
+                            ? `$${Math.round(job.salary_min)}`
+                            : "N/A",
+
+                tags: [
+                    job.category?.tag,
+                    job.salary_is_predicted === "1" ? "Predicted salary" : null,
+                ].filter(Boolean) as string[],
+
+                description: cleanDescription,
+                postedAt: new Date(job.created).toLocaleDateString(),
+
+                responsibilities: [],
+                requirements: [],
             };
         });
     } catch (err) {
