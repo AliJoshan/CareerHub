@@ -16,6 +16,18 @@ function Jobs() {
     const [selectedJobType, setSelectedJobType] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
 
+    const allCategories = Array.from(
+        new Set(jobs.flatMap(job => job.tags))
+    ).filter(Boolean);
+
+    const allLocations = Array.from(
+        new Set(jobs.map(job => job.location))
+    ).filter(Boolean);
+
+    const allJobTypes = Array.from(
+        new Set(jobs.map(job => job.type))
+    ).filter(Boolean);
+
     const filteredJobs = jobs.filter((job) => {
         const matchCategory = selectedCategory ? job.tags.includes(selectedCategory) : true;
         const matchLocation = selectedLocation ? job.location === selectedLocation : true;
@@ -58,6 +70,9 @@ function Jobs() {
                         category={selectedCategory}
                         location={selectedLocation}
                         jobType={selectedJobType}
+                        categories={allCategories}
+                        locations={allLocations}
+                        jobTypes={allJobTypes}
                         onCategoryChange={setSelectedCategory}
                         onLocationChange={setSelectedLocation}
                         onJobTypeChange={setSelectedJobType}

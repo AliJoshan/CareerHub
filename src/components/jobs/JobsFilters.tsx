@@ -2,6 +2,9 @@ type JobsFiltersProps = {
     category: string | null;
     location: string | null;
     jobType: string | null;
+    categories: string[];
+    locations: string[];
+    jobTypes: string[];
     onCategoryChange: (val: string | null) => void;
     onLocationChange: (val: string | null) => void;
     onJobTypeChange: (val: string | null) => void;
@@ -11,6 +14,9 @@ function JobsFilters({
     category,
     location,
     jobType,
+    categories,
+    locations,
+    jobTypes,
     onCategoryChange,
     onLocationChange,
     onJobTypeChange,
@@ -18,6 +24,7 @@ function JobsFilters({
     return (
         <div className="space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/70 space-y-4">
+                {/* Category */}
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-green-600 font-bold">📂</span>
@@ -25,29 +32,17 @@ function JobsFilters({
                     </label>
                     <select
                         value={category ?? ""}
-                        onChange={(e) =>
-                            onCategoryChange(
-                                e.target.value === "" ? null : e.target.value
-                            )
-                        }
-                        className="
-                            w-full
-                            border
-                            border-gray-300
-                            rounded-lg
-                            p-2.5
-                            focus:outline-none
-                            focus:ring-2 focus:ring-green-500
-                            transition
-                        "
+                        onChange={(e) => onCategoryChange(e.target.value || null)}
+                        className="w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
                     >
                         <option value="">All</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Design">Design</option>
-                        <option value="Marketing">Marketing</option>
+                        {categories.map((cat) => (
+                            <option key={cat} value={cat}>{cat}</option>
+                        ))}
                     </select>
                 </div>
 
+                {/* Location */}
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-green-600 font-bold">📍</span>
@@ -55,30 +50,17 @@ function JobsFilters({
                     </label>
                     <select
                         value={location ?? ""}
-                        onChange={(e) =>
-                            onLocationChange(
-                                e.target.value === "" ? null : e.target.value
-                            )
-                        }
-                        className="
-                            w-full
-                            border
-                            border-gray-300
-                            rounded-lg
-                            p-2.5
-                            focus:outline-none
-                            focus:ring-2 focus:ring-green-500
-                            transition
-                        "
+                        onChange={(e) => onLocationChange(e.target.value || null)}
+                        className="w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
                     >
                         <option value="">All</option>
-                        <option value="San Francisco, CA">San Francisco</option>
-                        <option value="New York, NY">New York</option>
-                        <option value="Remote">Remote</option>
-                        <option value="Austin, TX">Austin</option>
+                        {locations.map((loc) => (
+                            <option key={loc} value={loc}>{loc}</option>
+                        ))}
                     </select>
                 </div>
 
+                {/* Job Type */}
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-green-600 font-bold">🕒</span>
@@ -86,31 +68,19 @@ function JobsFilters({
                     </label>
                     <select
                         value={jobType ?? ""}
-                        onChange={(e) =>
-                            onJobTypeChange(
-                                e.target.value === "" ? null : e.target.value
-                            )
-                        }
-                        className="
-                            w-full
-                            border
-                            border-gray-300
-                            rounded-lg
-                            p-2.5
-                            focus:outline-none
-                            focus:ring-2 focus:ring-green-500
-                            transition
-                        "
+                        onChange={(e) => onJobTypeChange(e.target.value || null)}
+                        className="w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
                     >
                         <option value="">All</option>
-                        <option value="Full-time">Full-time</option>
-                        <option value="Part-time">Part-time</option>
-                        <option value="Remote">Remote</option>
+                        {jobTypes.map((type) => (
+                            <option key={type} value={type}>{type}</option>
+                        ))}
                     </select>
                 </div>
             </div>
         </div>
     );
 }
+
 
 export default JobsFilters;
