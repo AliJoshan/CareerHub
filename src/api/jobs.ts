@@ -1,4 +1,5 @@
 import { fetchJobsFromAdzuna } from "./jobsApi";
+import { parseJobDescription } from "../utils/parseJobDescription";
 
 export type Job = {
     id: string;
@@ -19,6 +20,9 @@ export async function getJobs(): Promise<Job[]> {
         const jobsFromAPI = await fetchJobsFromAdzuna();
 
         return jobsFromAPI.map((job) => {
+            const { responsibilities, requirements } =
+                parseJobDescription(job.description);
+
             const cleanDescription = job.description
                 .replace(/<[^>]+>/g, "")
                 .replace(/\s+/g, " ")
@@ -33,7 +37,7 @@ export async function getJobs(): Promise<Job[]> {
                 type: job.contract_time
                     ? job.contract_time
                         .replace("_", " ")
-                        .replace(/\b\w/g, (c) => c.toUpperCase())
+                        .replace(/\b\w/g, c => c.toUpperCase())
                     : "N/A",
 
                 salary:
@@ -51,8 +55,8 @@ export async function getJobs(): Promise<Job[]> {
                 description: cleanDescription,
                 postedAt: new Date(job.created).toLocaleDateString(),
 
-                responsibilities: [],
-                requirements: [],
+                responsibilities,
+                requirements,
             };
         });
     } catch (err) {

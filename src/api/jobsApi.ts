@@ -1,5 +1,3 @@
-// api/jobsApi.ts
-// api/jobsApi.ts
 export type JobFromAdzuna = {
     id: string;
     title: string;
@@ -18,7 +16,6 @@ export type JobFromAdzuna = {
     salary_min?: number;
     salary_max?: number;
 
-    // ✅ ADD THESE
     contract_time?: "full_time" | "part_time";
     contract_type?: string;
     salary_is_predicted?: "0" | "1";
@@ -34,6 +31,5 @@ export async function fetchJobsFromAdzuna(): Promise<JobFromAdzuna[]> {
     if (!res.ok) throw new Error("Failed to fetch jobs from Adzuna");
 
     const data = await res.json();
-    console.log(data);
     return data.results;
 }

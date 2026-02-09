@@ -2,18 +2,49 @@ export function parseJobDescription(html: string): {
     responsibilities: string[];
     requirements: string[];
 } {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
+    const text = html
+        .replace(/<[^>]+>/g, "\n")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\n+/g, "\n")
+        .trim();
 
-    const lists = Array.from(doc.querySelectorAll("ul"));
+    const lines = text
+        .split("\n")
+        .map(l => l.trim())
+        .filter(Boolean);
 
-    const responsibilities = lists[0]
-        ? Array.from(lists[0].querySelectorAll("li")).map(li => li.textContent?.trim() || "")
-        : [];
+    const responsibilities: string[] = [];
+    const requirements: string[] = [];
 
-    const requirements = lists[1]
-        ? Array.from(lists[1].querySelectorAll("li")).map(li => li.textContent?.trim() || "")
-        : [];
+    let current: "responsibilities" | "requirements" | null = null;
+
+    for (const line of lines) {
+        const lower = line.toLowerCase();
+
+        if (lower.includes("responsibilit")) {
+            current = "responsibilities";
+            continue;
+        }
+
+        if (
+            lower.includes("requirement") ||
+            lower.includes("qualification")
+        ) {
+            current = "requirements";
+            continue;
+        }
+
+        if (current && line.length > 3) {
+            const cleaned = line.replace(/^[-•–]/, "").trim();
+            if (cleaned) {
+                if (current === "responsibilities") {
+                    responsibilities.push(cleaned);
+                } else {
+                    requirements.push(cleaned);
+                }
+            }
+        }
+    }
 
     return { responsibilities, requirements };
 }

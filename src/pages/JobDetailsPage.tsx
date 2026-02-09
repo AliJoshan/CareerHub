@@ -168,32 +168,50 @@ export default function JobDetailsPage() {
                 <section className="relative rounded-2xl border border-green-200 bg-gradient-to-br from-green-50/60 to-white p-8 space-y-6 shadow-sm">
                     <span className="absolute left-0 top-6 h-12 w-1.5 rounded-r-full bg-green-500" />
                     <h2 className="text-lg font-semibold text-gray-900">Responsibilities</h2>
-                    <ul className="space-y-4">
-                        {job.responsibilities.map(item => (
-                            <li key={item} className="flex gap-3 text-gray-700">
-                                <span className="mt-1 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center shrink-0">
-                                    <span className="w-2 h-2 bg-white rounded-full" />
-                                </span>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+
+                    {job.responsibilities.length > 0 ? (
+                        <ul className="space-y-4">
+                            {job.responsibilities.map((item, index) => (
+                                <li key={index} className="flex gap-3 text-gray-700">
+                                    <span className="mt-1 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center shrink-0">
+                                        <span className="w-2 h-2 bg-white rounded-full" />
+                                    </span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            The employer did not provide a detailed list of responsibilities for this role.
+                            Please refer to the job description or apply on the official website for full details.
+                        </p>
+                    )}
                 </section>
 
                 {/* Requirements */}
                 <section className="relative rounded-2xl border border-green-200 bg-gradient-to-br from-green-50/60 to-white p-8 space-y-6 shadow-sm">
                     <span className="absolute left-0 top-6 h-12 w-1.5 rounded-r-full bg-green-500" />
-                    <h2 className="text-lg font-semibold text-gray-900">Requirements & Qualifications</h2>
-                    <ul className="space-y-4">
-                        {job.requirements.map(item => (
-                            <li key={item} className="flex gap-3 text-gray-700">
-                                <span className="mt-1 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center shrink-0">
-                                    <span className="w-2 h-2 bg-white rounded-full" />
-                                </span>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+                    <h2 className="text-lg font-semibold text-gray-900">
+                        Requirements & Qualifications
+                    </h2>
+
+                    {job.requirements.length > 0 ? (
+                        <ul className="space-y-4">
+                            {job.requirements.map((item, index) => (
+                                <li key={index} className="flex gap-3 text-gray-700">
+                                    <span className="mt-1 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center shrink-0">
+                                        <span className="w-2 h-2 bg-white rounded-full" />
+                                    </span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            Qualifications and requirements are provided by the employer on their
+                            official job posting.
+                        </p>
+                    )}
                 </section>
 
                 {/* CTA */}
