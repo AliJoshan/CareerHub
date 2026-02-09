@@ -47,8 +47,22 @@ function Footer() {
                                 Jobs
                             </Link>
                         </li>
-                        <li className="hover:text-green-600 transition">Saved Jobs</li>
-                        <li className="hover:text-green-600 transition">About</li>
+                        <li>
+                            <Link
+                                to="/saved"
+                                className="hover:text-green-600 transition"
+                            >
+                                Saved Jobs
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/about"
+                                className="hover:text-green-600 transition"
+                            >
+                                About
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
