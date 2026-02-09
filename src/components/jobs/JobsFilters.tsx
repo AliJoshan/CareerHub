@@ -8,6 +8,7 @@ type JobsFiltersProps = {
     onCategoryChange: (val: string | null) => void;
     onLocationChange: (val: string | null) => void;
     onJobTypeChange: (val: string | null) => void;
+    onClearFilters: () => void;
 };
 
 function JobsFilters({
@@ -20,6 +21,7 @@ function JobsFilters({
     onCategoryChange,
     onLocationChange,
     onJobTypeChange,
+    onClearFilters,
 }: JobsFiltersProps) {
     return (
         <div className="space-y-6">
@@ -77,6 +79,29 @@ function JobsFilters({
                         ))}
                     </select>
                 </div>
+
+                {/* Clear Filters */}
+                <button
+                    type="button"
+                    onClick={onClearFilters}
+                    disabled={!category && !location && !jobType}
+                    className="
+                    mt-4
+                    w-full
+                    rounded-lg
+                    border
+                    border-gray-300
+                    py-2.5
+                    text-sm
+                    font-medium
+                    text-gray-600
+                    hover:bg-gray-100
+                    transition
+                    disabled:opacity-50
+                    disabled:cursor-not-allowed"
+                >
+                    Clear Filters
+                </button>
             </div>
         </div>
     );

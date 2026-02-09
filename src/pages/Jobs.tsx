@@ -28,6 +28,13 @@ function Jobs() {
         new Set(jobs.map(job => job.type))
     ).filter(Boolean);
 
+    const handleClearFilters = () => {
+        setSelectedCategory(null);
+        setSelectedLocation(null);
+        setSelectedJobType(null);
+    };
+
+
     const filteredJobs = jobs.filter((job) => {
         const matchCategory = selectedCategory ? job.tags.includes(selectedCategory) : true;
         const matchLocation = selectedLocation ? job.location === selectedLocation : true;
@@ -76,6 +83,7 @@ function Jobs() {
                         onCategoryChange={setSelectedCategory}
                         onLocationChange={setSelectedLocation}
                         onJobTypeChange={setSelectedJobType}
+                        onClearFilters={handleClearFilters}
                     />
 
                     {content}
