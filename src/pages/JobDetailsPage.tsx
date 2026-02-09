@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, MapPin, Briefcase, DollarSign, Clock, Bookmark } from "lucide-react";
 import { getJobs } from "../api/jobs";
 import type { Job } from "../api/jobs";
+import { useSavedJobsStore } from "../stores/useSavedJobsStore";
 
 function Skeleton({ className }: { className?: string }) {
     return <div className={`bg-gray-200 animate-pulse rounded ${className}`} />;
@@ -36,6 +37,15 @@ export default function JobDetailsPage() {
     const navigate = useNavigate();
     const [job, setJob] = useState<Job | null>(null);
     const [loading, setLoading] = useState(true);
+    const toggleSave = useSavedJobsStore((s) => s.toggleSave);
+    const isSaved = useSavedJobsStore((s) =>
+        job ? s.isSaved(job.id) : false
+    );
+
+    const handleToggleSave = () => {
+        if (!job) return;
+        toggleSave(job.id);
+    };
 
     useEffect(() => {
         getJobs().then((jobs) => {
@@ -150,8 +160,18 @@ export default function JobDetailsPage() {
                         Apply Now
                     </button>
 
-                    <button className="w-11 h-11 rounded-xl border border-gray-200 hover:bg-gray-50 flex items-center justify-center transition">
-                        <Bookmark className="w-5 h-5 text-gray-700" />
+                    <button
+                        onClick={handleToggleSave}
+                        className={`w-11 h-11 rounded-xl border flex items-center justify-center transition
+        ${isSaved
+                                ? "bg-green-100 border-green-600"
+                                : "border-gray-200 hover:bg-gray-50"
+                            }`}
+                    >
+                        <Bookmark
+                            className={`w-5 h-5 ${isSaved ? "text-green-600 fill-green-600" : "text-gray-700"
+                                }`}
+                        />
                     </button>
                 </div>
             </div>
@@ -225,8 +245,18 @@ export default function JobDetailsPage() {
                         <button className="bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl px-6 py-2.5 transition shadow-md shadow-green-600/20">
                             Apply Now
                         </button>
-                        <button className="w-11 h-11 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition">
-                            <Bookmark className="w-5 h-5 text-gray-700" />
+                        <button
+                            onClick={handleToggleSave}
+                            className={`w-11 h-11 rounded-xl border flex items-center justify-center transition
+        ${isSaved
+                                    ? "bg-green-100 border-green-600"
+                                    : "border-gray-200 bg-white hover:bg-gray-50"
+                                }`}
+                        >
+                            <Bookmark
+                                className={`w-5 h-5 ${isSaved ? "text-green-600 fill-green-600" : "text-gray-700"
+                                    }`}
+                            />
                         </button>
                     </div>
                 </div>
