@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, MapPin, Briefcase, DollarSign, Clock, Bookmark } from "lucide-react";
 import { getJobs } from "../api/jobs";
