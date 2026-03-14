@@ -16,7 +16,7 @@ function NavBar() {
                 {/* Logo */}
                 <div className="flex items-center gap-2">
                     <div className="w-9 h-9 rounded-lg bg-green-600 flex items-center justify-center">
-                        <img className="w-6" src="public/briefcase.png" alt="CareerHub" />
+                        <img className="w-6" src="public/icons/briefcase1.png" alt="CareerHub" />
                     </div>
                     <span className="text-xl font-semibold text-gray-900">
                         CareerHub
